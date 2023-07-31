@@ -1,12 +1,15 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #define MEM_SIZE 4096
 
 static uint8_t memory[MEM_SIZE];
 
 void initialize_memory() {
 
+    //Initializes memory array with 0x00 
     memset(memory, 0x00, MEM_SIZE);
 }
 
@@ -17,10 +20,9 @@ void load_rom(const char* rom_path) {
 
     if(rom_file == NULL){
         perror("Failed to open file: ");
-        return 1;
     }
     else{
-        printf("Successfully opened: %s", rom_path);
+        printf("\nSuccessfully opened: %s\n", rom_path);
     }
 
     if(fseek(rom_file,0,SEEK_END) == -1) {
@@ -34,7 +36,7 @@ void load_rom(const char* rom_path) {
         exit(EXIT_FAILURE);
     }
 
-    printf("[*] Filename: %s, File Size: %d\n", rom_path, fsize);
+    printf("[*] Filename: %s, \nFile Size: %d\n\n", rom_path, fsize);
     rewind(rom_file);
 
     char buffer[fsize];
