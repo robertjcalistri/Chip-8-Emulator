@@ -6,7 +6,7 @@
 
 uint8_t V[16];
 uint16_t I;
-uint16_t PC;
+uint16_t *PC;
 
 void initialize_cpu(){
 
@@ -23,13 +23,19 @@ void initialize_cpu(){
     printf("Initialized all register to value 0\n");
 }
 
-uint16_t fetch_opcode(uint16_t PC, uint8_t memory[]){
+uint16_t fetch_opcode(uint16_t *PC, uint8_t memory[]){
 
-    uint8_t first_eight = memory[PC];
-    uint8_t second_eight = memory[PC+1];
+    uint8_t first_eight = memory[*PC];
+    uint8_t second_eight = memory[*PC+1];
     uint16_t opcode = first_eight << 8 | second_eight;
 
     printf("First eight: %x\n Second eight: %x\n Opcode: %x\n", first_eight, second_eight, opcode);
+    *PC = *PC + 2;
     return opcode;
+}
+
+void execute_instructions(uint16_t opcode) {
+
+    
 }
 

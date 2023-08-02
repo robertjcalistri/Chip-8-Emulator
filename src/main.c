@@ -17,7 +17,9 @@ int main(int argc, char **argv) {
     load_rom(rom_path);
 
     initialize_cpu();
-    uint16_t opcode = fetch_opcode(PC, memory);
+
+    uint16_t opcode = fetch_opcode(&PC, memory);
+
     
     return 0;
 }
