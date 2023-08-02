@@ -2,7 +2,10 @@
 #include <stdint.h>
 
 #ifndef MEMORY_H
-#define MEMORY_h
+#define MEMORY_H
+#define MEM_SIZE 4096
+
+extern uint8_t memory[MEM_SIZE];
 
 void initialize_memory();
 void load_rom(const char* rom_path);

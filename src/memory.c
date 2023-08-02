@@ -6,7 +6,7 @@
 #define MEM_SIZE 4096
 #define MEM_START 0x200
 
-static uint8_t memory[MEM_SIZE];
+uint8_t memory[MEM_SIZE];
 
 void initialize_memory() {
 
